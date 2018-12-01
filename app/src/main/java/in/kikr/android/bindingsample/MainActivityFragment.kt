@@ -1,5 +1,7 @@
 package `in`.kikr.android.bindingsample
 
+import `in`.kikr.android.bindingsample.databinding.FragmentMainBinding
+import `in`.kikr.android.bindingsample.viewmodel.SampleViewModel
 import android.support.v4.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +17,11 @@ class MainActivityFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+        // Bindingクラスを通してInflateする
+        val binding = FragmentMainBinding.inflate(inflater, container, false)
+        // DataBindingのため、ViewModelをセットする
+        binding.viewModel = SampleViewModel()
+        // inflateしたroot要素を返してやる
+        return binding.root
     }
 }
