@@ -7,7 +7,7 @@
         <!--バインドするViewModelの型と変数名を指定-->
         <variable
                 name="itemModel"
-                type="in.kikr.android.bindingsample.viewmodel.SampleItemModel"/>
+                type="in.kikr.android.bindingsample.viewmodel.SampleItemModel.RightText"/>
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -22,6 +22,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 tools:text="itemText"
                 android:text="@{itemModel.text}"
                 android:layout_margin="8dp"

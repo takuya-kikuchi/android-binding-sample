@@ -31,13 +31,13 @@ class MainActivityFragment : Fragment() {
             // バインドしたいコレクションを指定
             viewModel.collection,
             // どの型をどのレイアウトにバインドするかを設定する
-            OnItemBindClass<SampleItemModel>().map(
-                // 型
-                SampleItemModel::class.java,
-                // variableタグで指定した変数名を指定
-                BR.itemModel,
-                // SampleItemModelをRecyclerView内で表示するためのレイアウトを指定
-                R.layout.item_text)
+            OnItemBindClass<SampleItemModel>()
+                // 右寄せテキスト
+                .map(SampleItemModel.RightText::class.java, BR.itemModel, R.layout.item_text_right)
+                // 左寄せテキスト
+                .map(SampleItemModel.LeftText::class.java, BR.itemModel, R.layout.item_text_left)
+                // 画像
+                .map(SampleItemModel.Image::class.java, BR.itemModel, R.layout.item_image)
         )
 
         // inflateしたroot要素を返してやる
