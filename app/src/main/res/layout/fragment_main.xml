@@ -7,13 +7,23 @@
         >
     <!--ここでバインドするクラスを指定できる-->
     <data>
+
+        <import type="in.kikr.android.bindingsample.binding.BindingParameter"/>
+
+        <import type="in.kikr.android.bindingsample.viewmodel.SampleItemModel"/>
+        <!--additionalTextViewのVisibilityのためにViewをインポートしておく-->
+        <import type="android.view.View"/>
+
         <!--バインドするクラスの型と、それにアクセスするための変数名を指定する-->
         <variable
                 name="viewModel"
                 type="in.kikr.android.bindingsample.viewmodel.SampleViewModel"/>
 
-        <!--additionalTextViewのVisibilityのためにViewをインポートしておく-->
-        <import type="android.view.View"/>
+        <!--コレクションバインディング定義-->
+        <variable
+                name="bindingParameter"
+                type="BindingParameter&lt;SampleItemModel&gt;"/>
+
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -68,9 +78,12 @@
                 app:layout_constraintBottom_toTopOf="@id/addItemButton"
                 android:layout_marginTop="8dp"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                app:itemBinding="@{bindingParameter.itemBinding}"
+                app:items="@{bindingParameter.collection}"
                 />
 
-        <Button android:id="@+id/addItemButton"
+        <Button
+                android:id="@+id/addItemButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Item"
